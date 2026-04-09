@@ -6,71 +6,1307 @@
 <title>AI Enlightenment — The Complete Visual Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0a0a0f;
-  --surface: #12121a;
-  --surface2: #1a1a26;
-  --accent: #7c3aed;
-  --accent2: #06b6d4;
-  --accent3: #f59e0b;
-  --accent4: #10b981;
-  --text: #e2e8f0;
-  --muted: #64748b;
-  --border: rgba(255,255,255,0.07);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Mono', monospace;
-  font-size: 15px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.4;
-}
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 999;
-  padding: 16px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(10,10,15,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent2); letter-spacing: -0.5px; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text); }
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 40px 80px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124,58,237,0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(6,182,212,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(245,158,11,0.1) 0%, transparent 50%);
-}
-.hero-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent2); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
-.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(52px, 8vw, 110px); font-weight: 800; line-height: 
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --accent3: #f59e0b;
+    --accent4: #10b981;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --border: rgba(255,255,255,0.07);
+    --glow: rgba(124, 58, 237, 0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent2);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124,58,237,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(6,182,212,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 20% 70%, rgba(245,158,11,0.1) 0%, transparent 50%);
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 span { color: var(--accent); }
+  .hero h1 em {
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    color: var(--accent3);
+  }
+
+  .hero-sub {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent2);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 64px;
+    font-size: 15px;
+  }
+
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .vocab-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .vocab-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124,58,237,0.4);
+  }
+
+  .vocab-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-color, var(--accent));
+  }
+
+  .vocab-term {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--card-color, var(--accent));
+    margin-bottom: 4px;
+  }
+
+  .vocab-pronunciation {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .vocab-def {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .vocab-analogy {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--card-color, var(--accent));
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .vocab-analogy strong { color: var(--text); font-style: normal; }
+
+  .diagram-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagram-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--accent2);
+  }
+
+  .size-bars { display: flex; flex-direction: column; gap: 20px; }
+
+  .size-bar-row { display: flex; align-items: center; gap: 20px; }
+
+  .size-bar-label {
+    width: 80px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent3);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .size-bar-track {
+    flex: 1;
+    height: 36px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .size-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .size-bar-info { width: 200px; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  .flow-node {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .flow-node-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .flow-node-label { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .flow-node-sub { font-size: 11px; color: var(--muted); }
+  .flow-arrow { font-size: 24px; color: var(--accent); padding: 0 8px; flex-shrink: 0; }
+
+  .agent-diagram {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .agent-center {
+    background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.2));
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .agent-center::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 24px;
+    border: 1px solid rgba(124,58,237,0.2);
+  }
+
+  .agent-brain { font-size: 48px; display: block; margin-bottom: 12px; }
+  .agent-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--accent); margin-bottom: 8px; }
+  .agent-sides { display: flex; flex-direction: column; gap: 12px; }
+
+  .agent-tool {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .agent-tool-icon { font-size: 18px; }
+
+  .agent-connect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0.5;
+    margin-top: 60px;
+  }
+
+  .workflow-steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+
+  .workflow-steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent4));
+  }
+
+  .workflow-step { display: flex; gap: 24px; padding: 24px 0; position: relative; }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content { flex: 1; padding-top: 12px; }
+  .step-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .step-desc { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+  .step-code {
+    margin-top: 12px;
+    background: #0d0d14;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    overflow-x: auto;
+  }
+
+  .step-code .comment { color: var(--muted); }
+  .step-code .keyword { color: var(--accent3); }
+  .step-code .string { color: var(--accent4); }
+
+  .terminal {
+    background: #060609;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 32px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  .terminal-bar {
+    background: var(--surface2);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-bar span { margin-left: 12px; font-size: 12px; color: var(--muted); }
+  .terminal-body { padding: 24px; line-height: 2; }
+
+  .t-prompt { color: var(--accent4); }
+  .t-cmd { color: var(--text); }
+  .t-out { color: var(--muted); }
+  .t-highlight { color: var(--accent2); }
+  .t-success { color: var(--accent4); }
+  .t-warn { color: var(--accent3); }
+  .t-cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--accent2);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  .multi-agent { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+
+  .agent-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .agent-box.orchestrator {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.1));
+    border-color: rgba(124,58,237,0.5);
+  }
+
+  .agent-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .agent-role { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .agent-task { font-size: 12px; color: var(--muted); }
+
+  .agent-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    font-size: 24px;
+    color: var(--accent);
+    opacity: 0.5;
+    margin: -10px 0;
+  }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
+
+  .compare-table th {
+    background: var(--surface2);
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .compare-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); color: var(--muted); }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); color: var(--text); }
+  .compare-table td:first-child { color: var(--text); font-weight: 500; }
+
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .badge-green { background: rgba(16,185,129,0.15); color: var(--accent4); }
+  .badge-yellow { background: rgba(245,158,11,0.15); color: var(--accent3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: #f87171; }
+  .badge-blue { background: rgba(6,182,212,0.15); color: var(--accent2); }
+
+  .callout {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.08));
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .callout-icon { font-size: 28px; flex-shrink: 0; }
+  .callout-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--accent2); }
+  .callout-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  .roadmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+
+  .roadmap-phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roadmap-phase::after {
+    content: attr(data-phase);
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    font-family: 'Syne', sans-serif;
+    font-size: 80px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+
+  .phase-num { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .phase-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+
+  .phase-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .phase-items li { font-size: 13px; color: var(--muted); display: flex; gap: 10px; align-items: flex-start; }
+  .phase-items li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+  .divider {
+    width: calc(100% - 80px);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  .hl { color: var(--accent2); }
+  .hl-purple { color: var(--accent); }
+  .hl-yellow { color: var(--accent3); }
+  .hl-green { color: var(--accent4); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  footer {
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  footer .footer-logo { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 16px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-stats { gap: 24px; }
+    .agent-diagram { grid-template-columns: 1fr; }
+    .multi-agent { grid-template-columns: 1fr; }
+    .agent-box.orchestrator { grid-column: 1; }
+    .diagram-box { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AI.EDU</div>
+  <ul class="nav-links">
+    <li><a href="#vocab">Vocabulary</a></li>
+    <li><a href="#llm">LLMs</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#workflows">Workflows</a></li>
+    <li><a href="#build">Build It</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">// Your Complete AI Enlightenment</div>
+  <h1>From <em>Zero</em><br>to <span>Builder</span></h1>
+  <p class="hero-sub">Everything you need to understand AI — LLMs, agents, workflows, local models, APIs — explained visually. No fluff. Just clarity.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Concepts</span></div>
+    <div class="stat"><span class="stat-num">0$</span><span class="stat-label">API Cost</span></div>
+    <div class="stat"><span class="stat-num">1</span><span class="stat-label">Goal: Build</span></div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<section id="vocab">
+  <div class="section-label">Chapter 01</div>
+  <h2 class="section-title">The <span class="hl">Vocabulary</span></h2>
+  <p class="section-sub">Every term you've seen and never quite understood. Explained simply, with real-world analogies.</p>
+  <div class="vocab-grid">
+
+    <div class="vocab-card" style="--card-color: #7c3aed;">
+      <div class="vocab-term">LLM</div>
+      <div class="vocab-pronunciation">Large Language Model</div>
+      <div class="vocab-def">A type of AI trained on massive amounts of text. It predicts what word/token comes next — and that simple trick, done at scale, creates something that sounds intelligent.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Imagine someone who has read every book ever written. Ask them anything, they'll give you a pretty good answer — because they've seen similar patterns before.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #06b6d4;">
+      <div class="vocab-term">API</div>
+      <div class="vocab-pronunciation">Application Programming Interface</div>
+      <div class="vocab-def">A way for your code to talk to someone else's software. You send a request, they send back a response. It's how you use AI models without building them yourself.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> A restaurant menu. You don't cook the food — you order from the menu (API), and the kitchen (server) prepares and returns it.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #f59e0b;">
+      <div class="vocab-term">Parameters</div>
+      <div class="vocab-pronunciation">aka "weights" or "B"</div>
+      <div class="vocab-def">The numbers inside a neural network that define its behavior. When people say "7B" or "70B", they mean 7 billion or 70 billion parameters. More = usually smarter, but needs more RAM.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Think of parameters like the dials on a mixing board. The more dials you have, the more fine-tuned and complex the sound (intelligence) can get.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #10b981;">
+      <div class="vocab-term">Token</div>
+      <div class="vocab-pronunciation">The unit of text AI thinks in</div>
+      <div class="vocab-def">AI doesn't read words — it reads tokens. A token is roughly 3-4 characters or 0.75 of a word. "Hello world" = 2 tokens. APIs charge you per token. Context windows are measured in tokens.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Like how music is broken into beats, not full songs. AI processes text beat by beat.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #f472b6;">
+      <div class="vocab-term">Context Window</div>
+      <div class="vocab-pronunciation">aka "context length"</div>
+      <div class="vocab-def">How much text the AI can "see" at once. If your conversation exceeds this limit, the AI forgets earlier parts. Measured in tokens. Claude has ~200K. GPT-4o has 128K.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Like short-term memory. Once the window is full, older memories drop off the edge.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #a78bfa;">
+      <div class="vocab-term">Inference</div>
+      <div class="vocab-pronunciation">Running the model</div>
+      <div class="vocab-def">When you actually use an AI model to generate output. Training is teaching the model. Inference is using it. Running Ollama locally = running inference on your machine.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Training is going to school. Inference is actually doing your job using what you learned.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #34d399;">
+      <div class="vocab-term">Prompt</div>
+      <div class="vocab-pronunciation">Your input to the AI</div>
+      <div class="vocab-def">The text you send to a model. A system prompt sets the AI's behavior/persona. A user prompt is your actual question. Good prompting = better outputs.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> A prompt is like a job brief. The clearer and more detailed it is, the better the result you'll get.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #fb923c;">
+      <div class="vocab-term">Temperature</div>
+      <div class="vocab-pronunciation">Creativity dial (0.0 – 2.0)</div>
+      <div class="vocab-def">Controls how random the AI's outputs are. 0 = deterministic, always picks the most likely next token. 2 = highly creative/random. For coding use 0–0.3. For creative writing use 0.7–1.2.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Like the spice level at a restaurant. 0 = plain. 2 = ghost pepper. Pick what fits your needs.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #38bdf8;">
+      <div class="vocab-term">Embedding</div>
+      <div class="vocab-pronunciation">Text → Numbers</div>
+      <div class="vocab-def">Converting text into a list of numbers (a vector) that represents meaning. Words with similar meaning have similar vectors. Used in search, RAG, and memory systems.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Like GPS coordinates for words. "King" and "Queen" end up close together in space, because they're conceptually close.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #c084fc;">
+      <div class="vocab-term">RAG</div>
+      <div class="vocab-pronunciation">Retrieval-Augmented Generation</div>
+      <div class="vocab-def">Giving the AI access to external documents at runtime. Instead of just using its training data, it searches your docs and uses that context. This is how you build AI over your own data.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Open-book exam vs closed-book. RAG lets the AI open the book (your data) while answering.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #4ade80;">
+      <div class="vocab-term">Fine-tuning</div>
+      <div class="vocab-pronunciation">Specializing a model</div>
+      <div class="vocab-def">Taking a pre-trained model and training it further on your specific data. Makes it better at a narrow task. Expensive and complex — most people use RAG instead.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Hiring a generalist and sending them to a specialist bootcamp for your industry.</div>
+    </div>
+
+    <div class="vocab-card" style="--card-color: #fbbf24;">
+      <div class="vocab-term">Quantization</div>
+      <div class="vocab-pronunciation">Making models smaller</div>
+      <div class="vocab-def">Compressing a model by reducing the precision of its numbers. A 7B model at Q4 uses ~4GB RAM. Same model at Q8 uses ~8GB. Lets you run big models on consumer hardware. GGUF is a common format.</div>
+      <div class="vocab-analogy"><strong>Analogy:</strong> Like compressing a photo. Smaller file size, slightly lower quality, but still very usable.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="llm">
+  <div class="section-label">Chapter 02</div>
+  <h2 class="section-title">What Does <em class="hl-yellow">7B, 13B, 70B</em> Mean?</h2>
+  <p class="section-sub">The "B" stands for Billion parameters. More parameters = more capable, but needs more RAM and compute. Here's how they stack up.</p>
+
+  <div class="diagram-box">
+    <div class="diagram-title">⚖️ Model Size vs RAM Required vs Intelligence</div>
+    <div class="size-bars">
+      <div class="size-bar-row">
+        <div class="size-bar-label">1B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:8%;background:linear-gradient(90deg,#374151,#4b5563);">~0.6GB</div></div>
+        <div class="size-bar-info">Tiny. Phone-level. Basic tasks only.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">3B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:16%;background:linear-gradient(90deg,#1e3a5f,#1d4ed8);">~2GB</div></div>
+        <div class="size-bar-info">Simple Q&amp;A, summaries.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">7B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:28%;background:linear-gradient(90deg,#1e4d3f,#059669);">~4GB Q4</div></div>
+        <div class="size-bar-info">✅ Sweet spot. Runs on 8GB RAM. Surprisingly capable.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">13B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:45%;background:linear-gradient(90deg,#3b2a00,#d97706);">~8GB Q4</div></div>
+        <div class="size-bar-info">Noticeably smarter. Needs 16GB RAM.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">30B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:65%;background:linear-gradient(90deg,#4a1d96,#7c3aed);">~18GB Q4</div></div>
+        <div class="size-bar-info">Near GPT-4 level. Needs 32GB RAM.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">70B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:88%;background:linear-gradient(90deg,#7f1d1d,#dc2626);">~40GB Q4</div></div>
+        <div class="size-bar-info">Extremely powerful. Needs 64GB+ RAM.</div>
+      </div>
+      <div class="size-bar-row">
+        <div class="size-bar-label">405B</div>
+        <div class="size-bar-track"><div class="size-bar-fill" style="width:100%;background:linear-gradient(90deg,#831843,#ec4899);">200GB+</div></div>
+        <div class="size-bar-info">Server-grade only. Llama 3.1 405B.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-icon">💡</div>
+    <div>
+      <div class="callout-title">For Your Mac Mini M4 (32GB)</div>
+      <div class="callout-text">You can comfortably run <strong>13B models at Q8</strong> (full quality) or <strong>30B models at Q4</strong> (compressed). That's genuinely impressive for a local machine. Tools like Ollama handle all of this automatically. You pick the model, it handles the rest.</div>
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">🗺️ How Text Becomes Intelligence — The Full Pipeline</div>
+    <div class="flow">
+      <div class="flow-node">
+        <span class="flow-node-icon">📝</span>
+        <div class="flow-node-label">Raw Text</div>
+        <div class="flow-node-sub">Trillions of words from the internet, books, code</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">🔢</span>
+        <div class="flow-node-label">Tokenization</div>
+        <div class="flow-node-sub">Text split into tokens</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">🧠</span>
+        <div class="flow-node-label">Training</div>
+        <div class="flow-node-sub">Model learns patterns over months</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">⚖️</span>
+        <div class="flow-node-label">Weights</div>
+        <div class="flow-node-sub">Billions of numbers saved to disk</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">💬</span>
+        <div class="flow-node-label">Inference</div>
+        <div class="flow-node-sub">You send prompt, model responds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="agents">
+  <div class="section-label">Chapter 03</div>
+  <h2 class="section-title">What Is an <span class="hl-purple">Agent</span>?</h2>
+  <p class="section-sub">An agent is an AI that doesn't just answer — it takes actions. It can use tools, make decisions, and loop until a task is done.</p>
+
+  <div class="callout">
+    <div class="callout-icon">🤔</div>
+    <div>
+      <div class="callout-title">Simple Difference</div>
+      <div class="callout-text">
+        <strong>Regular LLM:</strong> You ask → It answers → Done.<br><br>
+        <strong>Agent:</strong> You give a goal → It thinks → It uses tools → It checks results → It tries again if needed → Done (eventually).
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-box" style="margin-top:40px;">
+    <div class="diagram-title">🤖 Inside an AI Agent</div>
+    <div class="agent-diagram">
+      <div class="agent-sides">
+        <div style="font-family:'Syne',sans-serif;font-size:13px;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Inputs</div>
+        <div class="agent-tool"><span class="agent-tool-icon">💬</span><span>User Goal / Task</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">🧠</span><span>Memory (past context)</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">📄</span><span>Documents / Data</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">🔄</span><span>Previous results</span></div>
+      </div>
+      <div>
+        <div class="agent-connect">→</div>
+        <div class="agent-center">
+          <span class="agent-brain">🧠</span>
+          <div class="agent-name">THE AGENT</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">LLM at the core — it thinks, plans, decides</div>
+          <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:14px;font-size:12px;color:var(--muted);text-align:left;line-height:1.8;">
+            1. Read the goal<br>
+            2. Decide what tool to use<br>
+            3. Use the tool<br>
+            4. Read the result<br>
+            5. Repeat until done
+          </div>
+        </div>
+        <div class="agent-connect">→</div>
+      </div>
+      <div class="agent-sides">
+        <div style="font-family:'Syne',sans-serif;font-size:13px;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Tools It Can Use</div>
+        <div class="agent-tool"><span class="agent-tool-icon">🔍</span><span>Web search</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">💻</span><span>Run code</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">📁</span><span>Read/write files</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">🌐</span><span>Call APIs</span></div>
+        <div class="agent-tool"><span class="agent-tool-icon">🗃️</span><span>Query databases</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">🔁 The Agent Loop — How It Actually Thinks</div>
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Receive Goal</div>
+          <div class="step-desc">You give the agent a task: <em>"Research the top 5 AI models of 2025 and write a summary report."</em> This goes into its context window.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Think + Plan</div>
+          <div class="step-desc">The LLM reasons about the task. "I should search the web first. Then organize the results. Then write the report." This planning step is called <span class="hl">chain-of-thought reasoning</span>.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Use a Tool</div>
+          <div class="step-desc">Agent calls a tool — e.g., search the web. The tool runs and returns results back to the agent's context.</div>
+          <div class="step-code">
+            <span class="comment"># Agent decides to use this tool:</span><br>
+            tool: <span class="string">"web_search"</span><br>
+            query: <span class="string">"top AI models 2025"</span><br>
+            <span class="comment"># Tool runs → results returned to agent</span>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Observe + Decide</div>
+          <div class="step-desc">Agent reads the tool's output. "Okay I got results. Do I have enough? No, let me search for more." It keeps looping until it decides the task is done.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Output Final Answer</div>
+          <div class="step-desc">Once satisfied, the agent produces its final response. You get a full research report, not just a one-liner.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="workflows">
+  <div class="section-label">Chapter 04</div>
+  <h2 class="section-title">Workflows &amp;<br><span class="hl">Multi-Agent</span> Systems</h2>
+  <p class="section-sub">A workflow is a sequence of steps that run automatically. Multi-agent means multiple AI agents, each with a job, working together like a team.</p>
+
+  <div class="diagram-box">
+    <div class="diagram-title">⚙️ Single Agent vs Multi-Agent</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:16px;color:var(--muted);">Single Agent</div>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div class="flow-node" style="width:100%;">
+            <span class="flow-node-icon">🤖</span>
+            <div class="flow-node-label">One Agent</div>
+            <div class="flow-node-sub">Does everything: research, write, check, format</div>
+          </div>
+          <div style="padding-left:28px;color:var(--muted);font-size:13px;">→ Slower, gets confused on complex tasks, limited</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:16px;color:var(--accent2);">Multi-Agent</div>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div class="flow-node" style="width:100%;border-color:rgba(124,58,237,0.5);">
+            <span class="flow-node-icon">👑</span>
+            <div class="flow-node-label">Orchestrator Agent</div>
+            <div class="flow-node-sub">Manages and delegates to sub-agents</div>
+          </div>
+          <div class="flow-arrow" style="padding-left:28px;">↓</div>
+          <div style="display:flex;gap:8px;width:100%;">
+            <div class="flow-node" style="flex:1;">
+              <span class="flow-node-icon">🔍</span>
+              <div class="flow-node-label" style="font-size:11px;">Researcher</div>
+            </div>
+            <div class="flow-node" style="flex:1;">
+              <span class="flow-node-icon">✍️</span>
+              <div class="flow-node-label" style="font-size:11px;">Writer</div>
+            </div>
+            <div class="flow-node" style="flex:1;">
+              <span class="flow-node-icon">✅</span>
+              <div class="flow-node-label" style="font-size:11px;">Checker</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">🏗️ Real Example — Multi-Agent Content Pipeline</div>
+    <div class="agent-box orchestrator" style="margin-bottom:12px;">
+      <span class="agent-icon">👑</span>
+      <div class="agent-role">Orchestrator Agent</div>
+      <div class="agent-task">Goal: "Write a blog post about the best running shoes of 2025"<br>→ Breaks this into subtasks and delegates</div>
+    </div>
+    <div class="agent-arrows">↙ ↓ ↘</div>
+    <div class="multi-agent" style="margin-top:12px;">
+      <div class="agent-box">
+        <span class="agent-icon">🔍</span>
+        <div class="agent-role">Research Agent</div>
+        <div class="agent-task">Searches web for top shoes, reviews, specs. Returns findings.</div>
+      </div>
+      <div class="agent-box">
+        <span class="agent-icon">✍️</span>
+        <div class="agent-role">Writing Agent</div>
+        <div class="agent-task">Takes research, writes the blog post in a specific style.</div>
+      </div>
+      <div class="agent-box">
+        <span class="agent-icon">🔎</span>
+        <div class="agent-role">Fact-Check Agent</div>
+        <div class="agent-task">Verifies claims. Flags anything that seems wrong.</div>
+      </div>
+    </div>
+    <div class="agent-arrows" style="margin-top:12px;">↘ ↓ ↙</div>
+    <div class="agent-box orchestrator" style="margin-top:12px;">
+      <span class="agent-icon">📦</span>
+      <div class="agent-role">Final Output</div>
+      <div class="agent-task">Orchestrator collects all results → assembles final blog post → done.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-icon">🖥️</div>
+    <div>
+      <div class="callout-title">Why Do People Run Multiple Agents in a Terminal?</div>
+      <div class="callout-text">Each window is running a different agent process. They each have their own LLM instance, their own tools, their own instructions. They communicate by passing messages (usually JSON). The orchestrator runs in one window and calls sub-agents in other windows. It looks complex but it's just multiple scripts talking to each other.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="build">
+  <div class="section-label">Chapter 05</div>
+  <h2 class="section-title">Build Your Own<br><span class="hl-green">Local Agent</span></h2>
+  <p class="section-sub">Zero API cost. Runs entirely on your machine. Using Ollama + OpenAI-compatible API + Python. Step by step.</p>
+
+  <div class="callout">
+    <div class="callout-icon">🧱</div>
+    <div>
+      <div class="callout-title">What You're Building</div>
+      <div class="callout-text">A local AI agent that runs a model on your machine (no internet needed, no cost), takes a task, uses tools (like searching files or running code), and completes it autonomously.</div>
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">🗂️ The Stack You Need</div>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Layer</th><th>Tool</th><th>What It Does</th><th>Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Model Runner</td><td>Ollama</td><td>Runs LLMs locally. Handles quantization, GPU offload, everything.</td><td><span class="badge badge-green">Free</span></td></tr>
+        <tr><td>Model</td><td>Llama 3.1 8B / Mistral 7B / Qwen 14B</td><td>The actual brain. Downloaded once, runs offline.</td><td><span class="badge badge-green">Free</span></td></tr>
+        <tr><td>Agent Framework</td><td>OpenClaw / LangChain / CrewAI</td><td>Manages the agent loop, tools, memory, multi-agent coordination.</td><td><span class="badge badge-green">Free</span></td></tr>
+        <tr><td>API Layer</td><td>Ollama's OpenAI-compatible API</td><td>Ollama exposes an API at localhost:11434 that mimics OpenAI's format.</td><td><span class="badge badge-green">Free</span></td></tr>
+        <tr><td>Language</td><td>Python 3.11+</td><td>Write your agent logic, tools, orchestration.</td><td><span class="badge badge-green">Free</span></td></tr>
+        <tr><td>Optional UI</td><td>Open WebUI</td><td>Chat interface that connects to Ollama. Looks like ChatGPT.</td><td><span class="badge badge-green">Free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">⚡ Step-by-Step Setup</div>
+    <div class="workflow-steps">
+
+      <div class="workflow-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Install Ollama</div>
+          <div class="step-desc">One-command installer. Runs the model locally and exposes it as an API on your machine.</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f56;"></div>
+              <div class="terminal-dot" style="background:#ffbd2e;"></div>
+              <div class="terminal-dot" style="background:#27c93f;"></div>
+              <span>Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <span class="t-prompt">$ </span><span class="t-cmd">brew install ollama</span><br>
+              <span class="t-out"># OR download from ollama.com/download</span><br><br>
+              <span class="t-prompt">$ </span><span class="t-cmd">ollama serve</span><br>
+              <span class="t-success">✓ Ollama running at http://localhost:11434</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Pull a Model</div>
+          <div class="step-desc">Download a model. Try <span class="hl">llama3.1:8b</span> to start, or go bigger with <span class="hl">qwen2.5:14b</span>.</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f56;"></div>
+              <div class="terminal-dot" style="background:#ffbd2e;"></div>
+              <div class="terminal-dot" style="background:#27c93f;"></div>
+              <span>Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <span class="t-prompt">$ </span><span class="t-cmd">ollama pull llama3.1:8b</span><br>
+              <span class="t-out">pulling manifest...</span><br>
+              <span class="t-out">pulling model 4.7GB ████████████ 100%</span><br>
+              <span class="t-success">✓ Model ready</span><br><br>
+              <span class="t-prompt">$ </span><span class="t-cmd">ollama run llama3.1:8b</span><br>
+              <span class="t-highlight">&gt;&gt;&gt; Hello! How can I help you today?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Install Python Dependencies</div>
+          <div class="step-desc"><span class="hl">openai</span> works because Ollama copies OpenAI's API format exactly.</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f56;"></div>
+              <div class="terminal-dot" style="background:#ffbd2e;"></div>
+              <div class="terminal-dot" style="background:#27c93f;"></div>
+              <span>Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <span class="t-prompt">$ </span><span class="t-cmd">pip install openai langchain crewai</span><br>
+              <span class="t-success">✓ All packages installed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Write Your First Agent</div>
+          <div class="step-desc">Runs entirely locally. No API key needed. No cost.</div>
+          <div class="step-code">
+            <span class="comment"># agent.py — Your first local AI agent</span><br>
+            <span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI<br><br>
+            <span class="comment"># Point to LOCAL Ollama instead of OpenAI</span><br>
+            client = OpenAI(<br>
+            &nbsp;&nbsp;base_url=<span class="string">"http://localhost:11434/v1"</span>,<br>
+            &nbsp;&nbsp;api_key=<span class="string">"ollama"</span><br>
+            )<br><br>
+            response = client.chat.completions.create(<br>
+            &nbsp;&nbsp;model=<span class="string">"llama3.1:8b"</span>,<br>
+            &nbsp;&nbsp;messages=[<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"You are a helpful agent."</span>},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Summarize AI trends in 2025"</span>}<br>
+            &nbsp;&nbsp;]<br>
+            )<br><br>
+            <span class="keyword">print</span>(response.choices[0].message.content)
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Run It</div>
+          <div class="step-desc">That's it. Local AI. Zero cost.</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f56;"></div>
+              <div class="terminal-dot" style="background:#ffbd2e;"></div>
+              <div class="terminal-dot" style="background:#27c93f;"></div>
+              <span>Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <span class="t-prompt">$ </span><span class="t-cmd">python agent.py</span><br><br>
+              <span class="t-highlight">In 2025, the major AI trends include...</span><br>
+              <span class="t-highlight">multimodal models, local inference, agent frameworks...</span><br><br>
+              <span class="t-success">✓ Ran locally. $0.00 spent. 🎉</span><span class="t-cursor"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">🎛️ API Parameters You'll See — What They Do</div>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Parameter</th><th>Type</th><th>What It Controls</th><th>Typical Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>model</td><td>string</td><td>Which LLM to use. "llama3.1:8b", "gpt-4o", etc.</td><td>"llama3.1:8b"</td></tr>
+        <tr><td>temperature</td><td>float 0–2</td><td>Creativity/randomness. 0 = deterministic, 1 = balanced, 2 = wild</td><td>0.7</td></tr>
+        <tr><td>max_tokens</td><td>integer</td><td>Max length of the response. 1 token ≈ 0.75 words.</td><td>1000–4000</td></tr>
+        <tr><td>top_p</td><td>float 0–1</td><td>Nucleus sampling. Limits which tokens can be chosen.</td><td>0.9</td></tr>
+        <tr><td>stream</td><td>boolean</td><td>If true, tokens stream in real-time (like ChatGPT typing effect).</td><td>true</td></tr>
+        <tr><td>system</td><td>string</td><td>The hidden instruction that sets the AI's role/persona/behavior.</td><td>"You are a helpful agent..."</td></tr>
+        <tr><td>messages</td><td>array</td><td>The full conversation history. Role can be "system", "user", or "assistant".</td><td>[{role, content}]</td></tr>
+        <tr><td>tools</td><td>array</td><td>Functions the model can call. This is what makes an LLM an agent.</td><td>[{name, description, params}]</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="roadmap">
+  <div class="section-label">Chapter 06</div>
+  <h2 class="section-title">Your <span class="hl-yellow">Learning</span> Roadmap</h2>
+  <p class="section-sub">Four phases. Go in order. By Phase 4 you'll be building things most people have no idea how to do.</p>
+
+  <div class="roadmap">
+    <div class="roadmap-phase" data-phase="1">
+      <div class="phase-num">Phase 01</div>
+      <div class="phase-title" style="color:var(--accent4);">Foundation</div>
+      <ul class="phase-items">
+        <li>Install Ollama, pull llama3.1:8b</li>
+        <li>Chat with it in terminal</li>
+        <li>Learn what tokens, context, temperature mean</li>
+        <li>Write a Python script that calls the local API</li>
+        <li>Try Open WebUI for a ChatGPT-like interface</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase" data-phase="2">
+      <div class="phase-num">Phase 02</div>
+      <div class="phase-title" style="color:var(--accent2);">First Agent</div>
+      <ul class="phase-items">
+        <li>Build a simple agent with 1–2 tools</li>
+        <li>Give it file read/write capability</li>
+        <li>Learn about system prompts and roles</li>
+        <li>Understand the agent loop (think → act → observe)</li>
+        <li>Try LangChain or OpenClaw framework</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase" data-phase="3">
+      <div class="phase-num">Phase 03</div>
+      <div class="phase-title" style="color:var(--accent);">Multi-Agent</div>
+      <ul class="phase-items">
+        <li>Build 2+ agents that talk to each other</li>
+        <li>Learn CrewAI or AutoGen</li>
+        <li>Add RAG — give agents access to your documents</li>
+        <li>Build an orchestrator + sub-agent setup</li>
+        <li>Add memory (short-term + long-term)</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase" data-phase="4">
+      <div class="phase-num">Phase 04</div>
+      <div class="phase-title" style="color:var(--accent3);">Production</div>
+      <ul class="phase-items">
+        <li>Build a full workflow for a real use case</li>
+        <li>Add vector database (ChromaDB, Weaviate)</li>
+        <li>Fine-tune a small model on your own data</li>
+        <li>Build a UI around your agent system</li>
+        <li>Put it on GitHub — this is your portfolio</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:48px;">
+    <div class="callout-icon">🎯</div>
+    <div>
+      <div class="callout-title">The Big Picture in One Sentence</div>
+      <div class="callout-text">
+        An <strong style="color:var(--text);">LLM</strong> is the brain. <strong style="color:var(--text);">Ollama</strong> runs it locally. <strong style="color:var(--text);">Tools</strong> give it hands. An <strong style="color:var(--text);">Agent loop</strong> gives it persistence. A <strong style="color:var(--text);">framework</strong> (OpenClaw, CrewAI) manages everything. Your <strong style="color:var(--text);">Python code</strong> is the glue. And your <strong style="color:var(--text);">local machine</strong> is powerful enough to run all of it for free.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">AI.EDU</div>
+  <p>Built for you. Learn it. Build it. Own it.</p>
+  <p style="margin-top:8px;font-size:11px;color:#374151;">Kazi's AI Enlightenment Guide • 2026</p>
+</footer>
+
+</body>
+</html>
